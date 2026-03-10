@@ -1,0 +1,453 @@
+/*
+ * globals.css
+ * ===========
+ * Global styles applied to the ENTIRE application.
+ *
+ * WHAT IS THIS?
+ * This file defines how everything looks — colors, fonts, spacing.
+ * It's imported in layout.js so every page gets these styles.
+ *
+ * We use CSS Variables (custom properties) to keep colors consistent.
+ * Change a variable here and it updates everywhere!
+ */
+
+/* ============================================================
+   CSS VARIABLES — Our Design System
+   ============================================================ */
+:root {
+  /* Background colors */
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --bg-card: #16213e;
+  --bg-card-hover: #1a2744;
+
+  /* Text colors */
+  --text-primary: #e0e0ff;
+  --text-secondary: #a0a0c0;
+  --text-muted: #6b6b8d;
+
+  /* Accent colors */
+  --accent-primary: #7c3aed;
+  --accent-secondary: #a855f7;
+  --accent-glow: rgba(124, 58, 237, 0.3);
+
+  /* Success / Error */
+  --success: #10b981;
+  --error: #ef4444;
+
+  /* Spacing & Radius */
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+/* ============================================================
+   RESET — Remove default browser styles
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-primary);
+}
+
+/* ============================================================
+   LAYOUT — Page wrapper
+   ============================================================ */
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.navbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.navbar-links a {
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--text-primary);
+  background: var(--accent-glow);
+}
+
+/* ============================================================
+   HERO SECTION — Home page
+   ============================================================ */
+.hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.hero h1 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-secondary), #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   FEATURE CARDS — Home page grid
+   ============================================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.feature-card .emoji {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   PRODUCT CARDS — Products page
+   ============================================================ */
+.products-header {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.products-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.products-header p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  display: block;
+  color: inherit;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 6px 24px var(--accent-glow);
+  color: inherit;
+}
+
+.product-card .product-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.product-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.product-card .price {
+  color: var(--accent-secondary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.product-card .description {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   PRODUCT DETAIL — Single product page
+   ============================================================ */
+.product-detail {
+  padding: 2rem 0;
+}
+
+.product-detail .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.product-detail-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+}
+
+.product-detail-card .product-emoji {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.product-detail-card h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-detail-card .price {
+  font-size: 1.5rem;
+  color: var(--accent-secondary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.product-detail-card .description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+/* ============================================================
+   ORDER FORM — Orders page
+   ============================================================ */
+.order-section {
+  padding: 2rem 0;
+}
+
+.order-section h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.order-section > p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.order-form {
+  background: var(--bg-card);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Order result box */
+.order-result {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.order-result.success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--success);
+}
+
+.order-result.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--error);
+}
+
+.order-result pre {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   NOT FOUND — 404 style
+   ============================================================ */
+.not-found {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.not-found h1 {
+  font-size: 2rem;
+  color: var(--error);
+}
+
+.not-found p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(124, 58, 237, 0.1);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
